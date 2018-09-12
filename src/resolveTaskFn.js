@@ -46,11 +46,19 @@ const successMsg = linter => `${symbols.success} ${linter} passed!`
  */
 function makeErr(linter, errStdout, errStderr) {
   const err = new Error()
-  err.privateMsg = dedent`
+  if(linter.indexOf('eslint')){
+    //keep special eslint formatter
+    console.log(errStdout);
+    err.privateMsg = dedent`
+    ${symbols.error} "${linter}" found some errors. Please fix them and try committing again.
+  `
+  }else{
+    err.privateMsg = dedent`
     ${symbols.error} "${linter}" found some errors. Please fix them and try committing again.
     ${errStdout}
     ${errStderr}
   `
+  }
   return err
 }
 
