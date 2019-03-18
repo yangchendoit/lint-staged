@@ -1,4 +1,4 @@
-# 🚫💩 llint-staged-fomatter-log
+# 🚫💩 lint-staged-fomatter-log
 
 Run linters against staged git files and don't let :poop: slip into your code base!
 
